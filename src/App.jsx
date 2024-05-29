@@ -1,15 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Header from "./components/Header.jsx";
+import MainPage from "./pages/MainPage.jsx";
+import DetailPage from "./pages/DetailPage.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-     selam
-    </>
+
+          <BrowserRouter>
+              <div className='p-5 md:p-10 lg:p-15 xl:px-20'>
+                  <Header/>
+                  <Routes>
+                      <Route path="/" element={<MainPage/>}/>
+                      <Route path="/movie/:id" element={<DetailPage/>}/>
+                  </Routes>
+              </div>
+          </BrowserRouter>
+
+
   )
 }
 
