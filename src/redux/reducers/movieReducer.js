@@ -1,6 +1,19 @@
+import {ActionTypes} from "../actionTypes.js";
 
+const initialState = {
+    isLoading: false,
+    error: null,
+    movies: []
+}
 
-const movieReducer = (state, action) => {
+const movieReducer = (state=initialState, action) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case ActionTypes.MOVIES_LOADING:
+            return {...state, isLoading: true};
+    }
+
     return state;
 }
 
