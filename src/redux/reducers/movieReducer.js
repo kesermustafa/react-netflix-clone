@@ -12,9 +12,14 @@ const movieReducer = (state=initialState, action) => {
     switch (type) {
         case ActionTypes.MOVIES_LOADING:
             return {...state, isLoading: true};
+        case ActionTypes.MOVIES_ERROR:
+            return {...state, isLoading: false, error: payload};
+        case ActionTypes.MOVIES_SUCCESS:
+            return {...state,  isLoading: false, error: null, movies: payload.results};
+        default:
+            return state;
     }
-
-    return state;
 }
 
 export default movieReducer;
+

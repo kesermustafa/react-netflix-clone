@@ -4,7 +4,6 @@ import movieReducer from "./reducers/movieReducer.js";
 import {thunk} from "redux-thunk";
 
 const rootReducer = combineReducers({
-
     genres:genreReducer,
     movies:movieReducer,
 })
