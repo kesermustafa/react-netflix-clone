@@ -24,7 +24,7 @@ const DetailPage = () => {
                 <Loader />
             ) : (
                 <div>
-                    <div className="relative mt-5 h-[35vh] rounded-md overflow-hidden shadow-lg">
+                    <div className="relative mt-5 h-[40vh] rounded-md overflow-hidden shadow-lg">
                         <img
                             src={baseImgUrl + movie.backdrop_path}
                             className="w-full h-full object-cover rounded-md"
@@ -37,18 +37,17 @@ const DetailPage = () => {
 
                     {/*orta alan*/}
 
-                    <div className='my-10 grid grid-cols-1 md:grid-cols-2 '>
+                    <div className='my-10 flex flex-col-reverse  md:flex-row gap-5 '>
 
-                        <div className=''>
+                        <div className='flex flex-col md:flex-[40%]   '>
                             <DetailDisplay title={"Kategoriler"} data={movie?.genres} />
                             <DetailDisplay title={"Konusulan Diller"} data={movie?.spoken_languages} />
                             <DetailDisplay title={"Yapim Sirketleri"} data={movie?.production_companies} />
                             <DetailDisplay title={"Yapimci Ulkeler"} data={movie?.production_countries} />
-
                         </div>
 
-                        <div className= 'flex flex-col gap-2 '>
-                            <p className='text-xl mb-4 text-gray-300'>
+                        <div className= 'flex md:flex-[60%]  flex-col gap-2 '>
+                            <p className='text-xl md:mt-4 mb-4 text-gray-300 text-justify md:text-left'>
                                 {movie.overview}
                             </p>
                             <p className='flex gap-3'>
