@@ -1,3 +1,4 @@
+import {ActionTypes} from "../actionTypes.js";
 
 const initialState = {
     isLoading: false,
@@ -6,7 +7,18 @@ const initialState = {
 }
 
 
-const genreReducer = (state=initialState, action) =>{
+const genreReducer = (state=initialState, {type, payload}) =>{
+
+    switch(type){
+        case ActionTypes.GENRES_LOADING:
+            return {...state, isLoading: true};
+
+        case ActionTypes.GENRES_ERROR:
+            return {...state, isLoading: false, error: payload};
+
+        case ActionTypes.GENRES_SUCCESS:
+            return {...state, isLoading: false, error:null, genres: payload};
+    }
     return state;
 }
 
