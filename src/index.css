@@ -11,9 +11,22 @@ body{
   margin: 0;
   background-color: #252525;
   color: #e6e6e6;
-  min-width: 100vh;
+  min-height: 100vh;
 }
+body::-webkit-scrollbar{
+  width: 8px;
+  border-radius: 5px;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb{
+  background: #ec1919;
+  border-radius: 5px;
+}
+
 
 .hero-img{
   filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.4));
 }
+
+

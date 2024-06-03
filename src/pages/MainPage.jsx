@@ -1,35 +1,32 @@
-import Hero from "../components/Hero.jsx";
-import {useDispatch, useSelector} from "react-redux";
+
+import Hero from '../components/Hero';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPopular } from '../redux/actions/movieActions';
+import { getGenres } from '../redux/actions/genreActions';
+import {Loader} from '../components/Loader';
+import Error from '../components/Error';
+import MovieList from '../components/MovieList';
 import {useEffect} from "react";
-import {getPopuler} from "../redux/actions/movieActions.js";
-import {getGenres} from "../redux/actions/genreActions.js";
-import {Loader} from "../components/Loader.jsx";
-import MovieList from "../components/MovieList.jsx";
 
 const MainPage = () => {
-
     const dispatch = useDispatch();
-
-   const {isLoading, error, genres} = useSelector((store) => store.genres);
-
+    const { isLoading, error, genres } = useSelector((store) => store.genres);
     useEffect(() => {
-        dispatch(getGenres())
-        dispatch(getPopuler())
+        dispatch(getPopular());
+        dispatch(getGenres());
     }, []);
-
     return (
         <div>
-           <Hero/>
-
-            {
-                // eslint-disable-next-line react/jsx-no-undef
-                isLoading ? (<Loader/>) : error ? <Error/> : (
-                    // eslint-disable-next-line react/jsx-key
-                    genres.map((genre) => <MovieList key={genre.id} genre={genre} />)
-                )
-            }
-
+            <Hero />
+            {isLoading ? (
+                <Loader />
+            ) : error ? (
+                <Error />
+            ) : (
+                genres.map((genre) => <MovieList key={genre.id} genre={genre} />)
+            )}
         </div>
-    )
-}
-export default MainPage
+    );
+};
+
+export default MainPage;

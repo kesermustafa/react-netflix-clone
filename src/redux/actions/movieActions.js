@@ -1,7 +1,7 @@
 import {ActionTypes} from "../actionTypes.js";
 import api from "../../utils/api.js";
 
-export const getPopuler = () => (dispatch) =>{
+export const getPopular = () => (dispatch) =>{
     dispatch({
         type:ActionTypes.MOVIES_LOADING
     })
