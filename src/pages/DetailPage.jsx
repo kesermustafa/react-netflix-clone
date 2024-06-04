@@ -1,10 +1,16 @@
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import api from "../utils/api.js";
 import {Loader} from "../components/Loader.jsx";
 import {baseImgUrl} from "../constants/index.js";
 import {DetailDisplay} from "../components/DetailDisplay.jsx";
 import millify from "millify";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+import '@splidejs/react-splide/css/skyblue';
+import '@splidejs/react-splide/css/sea-green';
+import '@splidejs/react-splide/css/core';
+import {ActorCard} from "../components/ActorCard.jsx";
 
 const DetailPage = () => {
 
@@ -13,10 +19,13 @@ const DetailPage = () => {
     const [movie, setMovie ] = useState(null)
 
     useEffect( () => {
-        api.get(`movie/${id}`).then((res) => setMovie(res.data)
+
+        const params = {
+            append_to_response : "credits, videos"
+        }
+        api.get(`movie/${id}`, {params}).then((res) => setMovie(res.data)
         ).catch(err => console.error(err));
     },[])
-
 
     return (
         <div>
@@ -61,6 +70,33 @@ const DetailPage = () => {
 
                             </p>
                         </div>
+
+                    </div>
+
+
+                    {/* slider alani*/}
+                    <div>
+
+
+                        <Splide
+                            options={{
+                                pagination: false,
+                                autoWidth: true,
+                                gap: '15px',
+                            }}
+                        >
+                            {
+                                movie.credits.cast.map((item, i) => (
+
+                                    <SplideSlide key={item.id} >
+                                        <ActorCard key={i} actor={item} />
+                                    </SplideSlide>
+
+                                ))
+                            }
+
+                        </Splide>
+
 
                     </div>
 

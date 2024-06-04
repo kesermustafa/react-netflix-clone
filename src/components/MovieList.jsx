@@ -25,8 +25,8 @@ const MovieList = ({ genre }) => {
             .catch((err) => console.error(err));
     }, []);
     return (
-        <div className="my-10">
-            {<h1 className="text-3xl font-semibold mb-3 ">{genre.name}</h1>}
+        <div className="my-2">
+            {<h1 className="text-3xl font-semibold genre-name ">{genre.name}</h1>}
 
             <Splide
                 options={{
@@ -34,13 +34,15 @@ const MovieList = ({ genre }) => {
                     autoWidth: true,
                     gap: '15px',
                 }}
+
+
             >
                 {movies.map((movie) => (
                     <SplideSlide key={movie.id}>
                         <Link to={`/movie/${movie.id}`}>
                             <img
                                 src={baseImgUrl + movie.poster_path}
-                                className="max-w-[300px] h-full cursor-pointer rounded"
+                                className="max-w-[250px] h-full cursor-pointer rounded"
                                 alt="Image 1"
                             />
                         </Link>

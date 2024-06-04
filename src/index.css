@@ -24,6 +24,14 @@ body::-webkit-scrollbar-thumb{
   border-radius: 5px;
 }
 
+.splide{
+  padding: 1.5em 3.5em;
+}
+
+.genre-name{
+  margin-left: 50px;
+}
+
 
 .hero-img{
   filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.4));

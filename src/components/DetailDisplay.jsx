@@ -2,13 +2,12 @@ import {baseImgUrl} from "../constants/index.js";
 
 export const DetailDisplay = ({title, data}) => {
 
-    console.log(title)
-    console.log(data)
     return (
         <div className="mb-6">
 
+
             <h2 className='text-2xl mt-3 font-semibold'>{title}</h2>
-            <div className='flex mt-3 flex-wrap gap-5 mb-4'>
+            <div  className='flex mt-3 flex-wrap gap-5 mb-4'>
                 {
                     // eslint-disable-next-line react/prop-types
                     data?.map((item) =>
